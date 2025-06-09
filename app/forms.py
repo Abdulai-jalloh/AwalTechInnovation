@@ -1,3 +1,4 @@
+from typing import Optional
 from flask_wtf import FlaskForm
 from datetime import date
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, DecimalField, SelectField,  MultipleFileField, FloatField, DateField
@@ -16,11 +17,11 @@ class AddLandForm(FlaskForm):
   mainImage = FileField('Main Image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images Only!')], render_kw={"class": "upload-Images"})
   gallery = MultipleFileField('Gallery Images', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Images Seulement!')], render_kw={"class": "upload-Images"})
 
-  latitude = FloatField('Latitude', validators=[DataRequired()])
-  longitude = FloatField('Longitude', validators=[DataRequired()])
+  latitude = FloatField('Latitude', validators=[Optional()])
+  longitude = FloatField('Longitude', validators=[Optional()])
   #Owner informatin
   name = StringField('Num', validators=[DataRequired()])
-  phone = FloatField('Phone', validators=[DataRequired()])
+  phone = StringField('Phone', validators=[DataRequired()])
   email = StringField('Email', validators=[Email()])
   submit = SubmitField('Ajouter le terrain')
 
