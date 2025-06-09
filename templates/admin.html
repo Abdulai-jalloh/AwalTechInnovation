@@ -77,9 +77,9 @@
       <p>Current Gallery Images</p>
       {% for img in land.gallery %}
       <img src="{{ img }}" alt="Gallery Image" width="100">
+      {% endfor %}
       {% else %}
       <p>Gallery is empty to images yet</p>
-      {% endfor %}
       {% endif %}
     <p>  {{ form.gallery.label }} </p> <br>
     <p>  {{ form.gallery(multiple=true) }} </p> <br> 

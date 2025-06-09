@@ -301,49 +301,74 @@ def view_land(land_id):
     land = Land.query.get_or_404(land_id)
     return render_template('land-details.html', land=land)
 
-@land_bp.route('/admin/land/<int:land_id>/edit', 
-methods=['GET', 'POST'])
+@land_bp.route('/admin/land/<int:land_id>/edit', methods=['GET', 'POST'])
 def Edit_land(land_id):
     land = Land.query.get_or_404(land_id)
     form = AddLandForm(obj=land)
+
     if request.method == 'POST':
         if form.validate_on_submit():
             land.title = form.title.data
-            land.location = form.locaton.data
+            land.location = form.location.data 
             land.price = float(form.price.data)
             land.description = form.description.data
-            land.features = form.features.data
+
+            features = form.features.data
+            features_list = [f.strip() for f in features.split(',')]
+            land.features = features_list
+
             land.status = form.status.data
-            
-            #Edit owner Information
+
+            # Editing owner Information
             land.name = form.name.data
             land.email = form.email.data
             land.phone = form.phone.data
-            land.latitude = float(form.latitude.data)
-            land.longitude = float(form.longitude.data)
-            #Save MainImages
+
+            try:
+                land.latitude = float(form.latitude.data)
+            except (ValueError, TypeError):
+                land.latitude = None
+
+            try:
+                land.longitude = float(form.longitude.data)
+            except (ValueError, TypeError):
+                land.longitude = None
+
+            # Saving Main Image
             if form.mainImage.data:
                 main_image = form.mainImage.data
-                filename = secure_filename(main_image.filename)
-                path = os.path.join(current_app.config['IMAGES_FOLDER'], filename).replace("\\", "/")
-                main_image.save(path)
-                land.mainImage = filename
+                if main_image.filename:
+                
+                    try:
+                        upload_result = cloudinary.uploader.upload(main_image)
+                        main_image_url = upload_result['secure_url']
+                        land.mainImage = main_image_url
+                        print("Main image updated:", main_image_url)
+                    except Exception as e:
+                        print("Main image upload error:", e)
+                        flash(f"Main image upload failed: {e}", "danger")
+                        return redirect(request.url)
 
-            #Save Gallery Images
+            # Saving Gallery Images
             if form.gallery.data:
                 gallery_url = []
                 for i, img in enumerate(form.gallery.data):
                     if img.filename:
-                        filename = secure_filename(img.filename)
-                        save_gallery = f"{land.title}-gallery-{i+1}-{filename}"
-                        gallery_path = os.path.join(current_app.config['IMAGES_FOLDER'], save_gallery).replace("\\", "/")
-                        img.save(gallery_path)
-                        gallery_url.append(save_gallery)
-                        land.gallery = gallery_url
+                        try:
+                            upload_result = cloudinary.uploader.upload(img)
+                            img_url = upload_result['secure_url']
+                            gallery_url.append(img_url)
+                            print(f"Gallery image {i+1} updated:", img_url)
+                        except Exception as e:
+                            print(f"Gallery image {i+1} upload error:", e)
+                            flash(f"Gallery image {i+1} upload failed: {e}", "danger")
+                            return redirect(request.url)
+                land.gallery = gallery_url  # Moving outside the loop
 
-                        db.session.commit()
-                        flash("Land Updated Successfully!", "success")
-                        return redirect(url_for('admin_work'))
+            db.session.commit()
+            flash("Land Updated Successfully!", "success")
+            return redirect(url_for('land.dashboard'))  
+
     return render_template('admin.html', form=form, editing=True, land=land)
 
 @land_bp.route('/admin/land/<int:land_id>/hide', 

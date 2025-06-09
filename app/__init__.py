@@ -19,7 +19,7 @@ def create_app():
         template_folder=os.path.join(project_folder, '..', 'templates'),
         static_folder=os.path.join(project_folder, '..', 'static')
     )
-
+    app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  
     # Load .env only if NOT running on Render
     if os.getenv("RENDER") is None:
         load_dotenv(os.path.join(base_dir, '..', '.env'))
@@ -49,9 +49,10 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = (
         f"mysql+pymysql://{mysql_name}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_db}?charset=utf8mb4"
     )
+    
+    app.config['WTF_CSRF_TIME_LIMIT'] = None  
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev_secret_fallback')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['ALLOWED_EXTENSION'] = {'JPG', 'jpeg', 'png'}
 
     # Add pool_recycle and pool_pre_ping to avoid lost connection errors
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {

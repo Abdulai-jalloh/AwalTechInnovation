@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Land Details</title>
+  <link rel="stylesheet" href="/static/style.css">
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+
+
+</head>
+<body class="details-page">
+  <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <!-- <a href="{{ url_for('land.dashboard')}}">Admin DashBoard</a> -->
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header> 
+    <div class="land-details"> 
+      <div class="cen"><h1>À propos de ce terrain</h1></div>
+    <section class="gallery">
+    
+      {% for img in land.gallery%}
+      <a href="{{img}}" data-lightbox="land-gallery">
+      <img src="{{ img }}" alt="gallery">
+      </a>
+      {% endfor %}
+
+    </section>
+    <section class="land-Info">
+      <h2>Titre: {{land.title}}</h2>
+      <p><strong>Emplacement:</strong> {{land.location}}</p>
+      <p><strong>Prix:</strong> {{land.price}}</p>
+      <p> <big>Description:</big> {{land.description}}</p>
+      <p><big>Status</big> {{land.status}} </p>
+      <ul> 
+        <h2>Caractéristiques:</h2>
+        {% for f in land.features %}
+        <li>{{f}}</li>
+        {% endfor %}
+       
+      </ul>
+      <h3>Owner Information</h3>
+      <p>Num: {{land.name}}</p>
+      <p>Numéro: <a href="tel:">{{land.phone}}</a> </p>
+      <p>Email: <a href="mailto:">{{land.email}}</a> </p>
+      
+      </section>
+
+      <p>Map URL</p>
+        <div id="map" data-lat="{{ land.latitude }}" data-lng="{{ land.longitude }}"></div>
+      
+    <a class="back-link" href="/">Accueil</a>
+  </div>
+ <script src="/static/main.js" defer></script>
+ <!-- API Keys Script -->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfFFPA8vNbobdaZhVNgbp-jc5oIt9hfnk&callback=initMap" async defer></script>
+
+<!-- lightbox To all multiple Images view -->
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+</body>
+</html>tr,hflllgy

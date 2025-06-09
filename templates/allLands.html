@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="AllLands">
+  <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <a href="/">Home</a>
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header> <br> <br> <br>
+  <div class="run">
+    <h1> <span>LandX</span> <br> <span>Achetez un terrain facilement</span></h1>
+  </div>  <br> <br>
+  <span class="all-msg">
+  <h3>Trouvez le terrain idéal en toute simplicité</h3>
+  <p>Utilisez la barre de recherch pour explorer les terrains <br> disponibles par localisation.</p> </span> <br>
+ 
+<div class="search-box">
+  <input type="text" id="search-location" placeholder="Entrez le nom de l'emplacement souhaité">
+    <img src="/static/images/search.png" id="search-Icon" class="SerachIc" alt="Search">
+</div>
+  
+  <div class="all-msg">
+    <p>
+    Chaque annonce vous donne un aperÇu rapide: <br> photo, titre, Prix et emplacement. <br>
+  Cliquez sur <big>Voir plus</big> pour accéder à la carte <br>
+   et aux informations de contact du propriétaire.</p> <br>
+   <h3>
+    Simple. Transparent. Fiable. <br>
+    Commencez votre recherche des maintenant!
+   </h3>
+  </div>
+<p class="No-result" style="color: red; display: none;">Aucun terrain disponible pour cet emplacement pour le moment.</p>
+  <section class="all-Lands" id="lands-container">
+
+  </section>
+  
+  <script src="/static/main.js" defer></script>
+</body>
+</html>

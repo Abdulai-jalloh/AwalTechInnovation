@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page</title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="Contact-page">
+ <header> 
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <a href="/"></a>
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+ </header>
+ <section class="contact-hero">
+  <h1>Contacte nous</h1> <br>
+  <h3 class="msg">si vous ne trouves pas le terrain que vous reacherchez, <br> n'hésitez pas à nous contacter - nous sommes heureux de vous aider!</h3>
+  <br> <br> <br> <br> <br>
+  
+  <p> <img src="/static/images/call.png" alt="Call Icon" class="Icon"> <strong>Phone:</strong><a href="tel:+224620000123">+224620000123</a></p>
+  <p> <img src="/static/images/Email.png" alt="Email Icon" class="Icon"><strong>Email:</strong><a href="mailto:example.gmeil.com">examplegmail.com</a></p>
+ </section>
+  
+    <br> <br> <br>
+
+    <form method="POST" action="{{ url_for('land.contact')}}">
+      <fieldset>
+        <legend>Information personnelles</legend>
+       {{ form.hidden_tag() }}
+
+        {{ form.FirstName.label }} <br>
+        {{ form.FirstName(size=50)}} <br>
+        {{ form.LastName.label }} <br>
+        {{ form.LastName(size=50)}} <br>
+        {{ form.Phone.label }} <br>
+        {{ form.Phone(size=15) }} <br>
+        {{ form.Email.label }} <br>
+        {{ form.Email()}}
+        {{ form.Message.label }}
+        {{ form.Message() }}
+        <button type="submit">Send Message</button>
+    </form>
+  </fieldset>
+<div class="flash_msg">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for catrgory, msg in messages %}
+    <div class="alert alert-{{catrgory}}">{{msg}}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  <footer id="Contact">
+    <p> &copy; 2025 LandX. Tous droits réservés.</p>
+  </footer>
+  <script src="/static/main.js" defer></script>
+</body>
+</html>
