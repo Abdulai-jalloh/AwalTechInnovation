@@ -1,8 +1,8 @@
-from typing import Optional
+
 from flask_wtf import FlaskForm
 from datetime import date
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, DecimalField, SelectField,  MultipleFileField, FloatField, DateField
-from wtforms.validators import DataRequired, Email, Length, NumberRange
+from wtforms.validators import DataRequired, Email, Length, NumberRange, Optional
 from flask_wtf.file import FileAllowed, FileRequired, FileField
 
 
