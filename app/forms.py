@@ -12,7 +12,7 @@ class AddLandForm(FlaskForm):
   location = StringField('Emplacement', validators=[DataRequired()])
   price = DecimalField('prix (in GF)', validators=[DataRequired(), NumberRange(min=0)])
   description = TextAreaField('Description', validators=[DataRequired(), Length(min=8)])
-  features = StringField('Features', validators=[DataRequired()])
+  features = StringField('Features', validators=[Optional()])
   status = StringField('Status', validators=[DataRequired()])
   mainImage = FileField('Main Image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images Only!')], render_kw={"class": "upload-Images"})
   gallery = MultipleFileField('Gallery Images', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Images Seulement!')], render_kw={"class": "upload-Images"})
