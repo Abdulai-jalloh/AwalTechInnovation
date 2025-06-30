@@ -1,0 +1,727 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+body{
+  margin: 0;
+  padding: 1px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; 
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+   display: flex;
+  background: #008080;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border-bottom: 1px solid #000;
+  z-index: 10; 
+}
+
+
+nav a {
+  margin: 1rem;
+  color: white;
+  text-decoration: none;
+}
+.hero {
+  position: relative;
+  background-position: center;
+font-weight: bold;
+  padding: 80px 20px;
+  text-align: center;
+  background: url('/static/images/house.jpg') repeat center center/cover;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+.sec{
+  text-align: center;
+  font-weight: bold;
+}
+.hero .btn{
+  margin-top: 15px;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.featured-lands {
+  padding: 2em;
+}
+.lands-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+
+
+#lands-Container{
+  display: inline-block;
+  align-items: center;
+ }
+
+.land-card {
+font-weight: bold;
+min-height: 300px;
+flex: 0 0 auto;
+border: 1px solid #ccc;
+border-radius: 10px;
+scroll-snap-align: start;
+background: white;
+padding: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0, 1);
+}
+
+.cen{
+  text-align: center;
+}
+
+.land-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+footer  {
+
+  text-align: center;
+  padding: 1rem;
+  background: #008080;
+  color: white;
+  margin-top: 2em;
+}
+/* Style for land deatails */
+
+.land-details{
+  background-color: #fff;
+  padding: 100px;
+  border-radius: 10px;
+  /* max-width: 80px; */
+  margin: auto;
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0, 1);
+}
+
+.land-details img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.land-details h2{
+  margin-top: 10px;
+}
+.land-details p {
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.back-link{
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.about {
+  font-weight: bold;
+  background: #eef1f4;
+  padding: 2rem;
+  text-align: center;
+}
+
+.search-box input{
+flex: 1;
+padding: 12px;
+border: none;
+outline: none;
+font-size: 16px;
+width: 100%;
+}
+
+.search-icon{
+  padding: 12px 16px;
+  cursor: pointer;
+  background-color: #2e8b57;
+  color: white;
+  font-size: 18px;
+  border-left: 1px solid #ccc;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input[type="text"] {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.search-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.search-button:hover {
+  background: #f0f0f0;
+}
+
+.hero-content{
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#search-location{
+  padding: 8px;
+  
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.no-result{
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #888;
+}
+
+/* contact style */
+
+form, fieldset{
+  font-weight: bold;
+  width: 90%;
+  box-sizing: border-box;
+}
+fieldset{
+  background-color: #d4ffd3;
+  padding: 10px;
+  border: none;
+  border: 2px solid #007bff;
+}
+legend{
+  padding: 2px;
+}
+label, input, textarea{
+  margin-left: 10px;
+  font-size: large;
+  font-weight: bold;
+  display: block;
+  width: 90%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+input, textarea{
+  padding: 10px;
+  font-size: 1em;
+}
+@media (min-width: 600px){
+  fieldset {
+    max-width: 600px;
+    margin: auto;
+  }
+}
+
+
+button {
+  background-color: #0a74da;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.hidden{
+  font-size: bold;
+  background-color: #008080;
+  color:white;
+  display: none;
+
+}
+
+
+
+
+.contact-hero{
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  padding: 100px 20px;
+  text-align: center;
+  color: rgb(250, 250, 250);
+  background: url('/static/images/house.jpg') no-repeat center center/cover;
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+}
+.contact-hero a{
+  color: #fff
+}
+
+.contact-hero a:hover{
+color: #0a74da;
+}
+
+
+.Icon{
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+/* contact style */
+
+/*All lands Style*/
+
+
+.run{
+  background: linear-gradient(#eefff9 0%, #fcf0ed 49%, #dcdbff 100%);
+  padding: 0 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+/* Style for the Run Text */
+.run h1 span{
+  background: linear-gradient(#000, #000);
+  background-repeat: no-repeat;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 0%;
+  margin-top: 100px;
+  font-size: 5.6vw;
+  line-height: 9vw;
+}
+
+.run h1 span:first-child{
+  animation: textcolor1 2s linear infinite alternate;
+}
+.run h1 span:last-child{
+  animation: textcolor2 2s linear infinite alternate;
+}
+
+@keyframes textcolor1 {
+  0%{
+    background-size: 0%;
+  }
+  40%{
+    background-size: 100%;
+  }
+  100%{
+    background-size: 100%;
+  }
+}
+@keyframes textcolor2 {
+  0%{
+    background-size: 0%;
+  }
+  40%{
+    background-size: 0%;
+  }
+  100%{
+    background-size: 100%;
+  }
+}
+
+/* Style for the Run Text */
+
+
+
+
+.all-Lands {
+/* text-align: center; */
+  /* display: inline-block; */
+  /* margin: 800px; */
+  
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  /* gap: 20px; */
+  /* padding: 40px; */
+}
+
+.Lands-card{
+border: 1px solid #ddd;
+margin: 5px ;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 15px ;
+  box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  background: #fff;
+}
+
+.Lands-card img{
+  width: 90%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.view-more-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #5dd60c;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+#search-location{
+  padding: 10px;
+  width: 650px;
+  height: 50px;
+  /* border: 1px solid #ccc; */
+  border-right: none;
+  border: #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.sul{
+  max-width: 600px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.SerachIc{
+  width: 40px;
+  border: none;
+}
+
+.No-result{
+  font-size: 5.1vw;
+}
+
+.Message{
+  width: 20vmax;
+  height: 5vmax;
+  border: 2px solid #2e8b57;
+}
+
+#Omsg{
+  display: block;
+}
+
+#Omsg-B{
+  background: #5dd60c;
+  display: block;
+  padding: 8px 12px;
+}
+
+.menue{
+  width: 20px;
+}
+
+.land-Info{
+  font-weight: bold;
+}
+
+
+/* Add to add land */
+
+button:hover{
+  background-color: #004466;
+}
+
+
+
+
+.feat{
+  margin: 4px;
+}
+
+
+.admin-title{
+  text-align: center;
+}
+
+/* Login style code */
+
+.Centers{
+  background: linear-gradient(to right, #7cb5c5, #9db8d8);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+}
+
+.login-page{
+  text-align: center;
+  width: 400px;
+  background: #1cffec;
+  border: 2px solid #007bff;
+  padding: 35px 45px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.login-page input{
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.login-page form{
+  padding: 10px !important;
+}
+
+#add-msg{
+  text-align: center;
+  font-weight: bold;
+  color: #5dd60c;
+}
+
+
+
+.log-form{
+  border-radius: 10px;
+}
+
+#flash-m{
+  font-weight: bold;
+  color: red;
+}
+
+.fb-share-button{
+  padding: 10px;
+}
+.all-msg{
+  text-align: center;
+  font-weight: bold;
+}
+footer a{
+  font-weight: bold;
+  color: white;
+}
+
+.flash_msg{
+  text-align: center;
+  font-weight: bold;
+}
+
+.DashBoard{
+  text-align: center;
+}
+
+.Delete-button{
+  display: inline;
+}
+
+#map{
+  height: 400px;
+  width: 100%;
+}
+
+table{
+  border: 2px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+
+}
+
+  tr, th, td {
+    border: 1.5px solid rgb(241, 222, 222);
+    padding: 12px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+   }
+   th{
+    background-color: #f4f4f4;
+   }
+   img{
+    border-radius: 4px;
+   }
+   caption{
+    font-size: 1.5rem;
+    font-weight:bold ;
+    margin-bottom: 10px;
+    color: #333;
+   }
+
+
+
+   @media screen and (max-width: 769px) {
+    table{
+      font-size: 14px;
+    }
+    td{
+      padding: 8px;
+    }
+    
+   }
+
+   .admin-butt{
+    font-size: larger;
+    font-weight: bold;
+    
+    background-color: rgb(153, 144, 144);
+    margin: 10px;
+    width: 50%;
+    padding: 35px;
+    border-radius: 12px;
+   }
+ 
+   .admin-butt:hover{
+    background-color: #a1cf82;
+
+   }
+
+   .admin-intro{
+    text-align: center;
+    background: linear-gradient(to right, #9bcbd8, #96b3d6);
+    width: 100%;
+    height: 400px;
+
+   }
+ .adtxt h1 h2{
+   margin-top: 20px;
+ }
+
+ .upload-Images{
+  color: #fff;
+  font-weight: bold;
+  padding: 12px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #538ee6;
+  cursor: pointer;
+  width: 70%;
+  font-family: inherit;
+ }
+
+ .flash-msg{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #5dd60c;
+ }
+
+ .sold-card{
+  font-size: 20px;
+  font-weight: bold;
+  
+
+ }
+ .sold-card p a{
+  margin: 5px;
+  color: #fff;
+  background-color: #007bff;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+ }
+ .admin-bored{
+  text-align: center;
+  font-weight: bold;
+ }
+ .delete-msg{
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+ }
+
+ .land-Table{
+  margin-top: 30px;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  overflow: auto;
+ }
+
+ .action-butt{
+  
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #538ee6;
+  padding: 1.2rem 1.5rem;
+ }
+ .action-butt a{
+  color: white;
+ }
+ .delete-btn{
+    font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1.2rem 1.5rem;
+  background-color: red;
+ }
+
+ .Menue-link{
+  width: 30px;
+  display: none;
+ }
+
+
+
+ /* Media quaris for navbar */
+ @media only screen and (max-width: 600px){
+   header nav{
+    position: absolute;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    left: 0;
+    top: 100%;
+    justify-content: center;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+  
+  }
+  header nav a{
+    margin: 12px;
+    font-size: 15px;
+  }
+  .Menue-link{
+    margin-left: 95%;
+    margin-bottom: 0;
+    display: block;
+    width: 30px;
+  }
+   nav{
+  display: flex;
+ }
+ .Show-Menue{
+    min-height: 30px;
+  }
+ }

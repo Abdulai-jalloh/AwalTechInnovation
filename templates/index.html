@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootsrap@5.3.0/dist/css/bootsrap.min.css" rel="stylesheet" >
+  <link href="https://fonts.googleapis.com/css2?family=poppins:wght@200;300;400;500;600;700&diplay=swap" rel="stylesheet">
+  <title>Home Page</title>
+ 
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="home-page">
+  <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <!-- <a href="{{ url_for('land.dashboard')}}">Admin DashBoard</a> -->
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header>
+
+  <section class="hero">
+<div class="hero-content">
+  <div class="search-box">
+    <input type="text" id="search-location" placeholder="Entrez le nom de l'emplacement souhaité ">
+    <img src="/static/images/search.png" id="search-Icon" class="SerachIc" alt="">
+   <!-- <span id="searchIcon" class="search-icon">&#128269;</span> -->
+  </div>
+<a href="{{ url_for('land.lands') }}" class="btn">Terrain Disponible</a>
+</div>
+  </section>
+  <div class="sec"> <h2 data-key="home-title" >Trouvez votre terrain idéal</h2> <br>
+    <p data-key="home-intro" >Nous rendons l'achat de terrain facile et sécurisé.<br> Explores des annonce de terrains vérifiés a travers le pays.</p>
+  </div>
+ 
+  <section class="featured-lands" id="featuredLands">
+    <h3>terrain à vendre</h3>
+    <p class="No-result" style="color: rgb(0, 0, 0); display: none;">Aucun terrain disponible pour cet emplacement pour le moment.</p>
+    <div class="lands-container">
+    
+    </div>
+                 
+  </section>
+
+  <section id="about" class="about"> 
+<h2>À propos de nous </h2>
+<p>Nous connectons les acheteurs a des vendeurs de terrain de confiance. <br>Notre mission est de rendre la possession de terrain facile et accessible a tous.. </p>
+  </section>
+
+  <footer id="Contact">
+    <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+    <p>Contact Us: Awal Innovation.com | +224 123 456 789</p>
+    <p> &copy; 2025 LandX. Tous droits réservés.</p>
+  </footer>
+  <script src="/static/main.js" defer></script>
+  <!-- <script src="{{url_for('static',filename='main.js')}}"></script> -->
+</body>
+</html>

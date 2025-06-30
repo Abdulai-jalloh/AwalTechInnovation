@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Admin Page</title>
+</head>
+<body> 
+  <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <a href="{{ url_for('land.dashboard')}}">Admin DashBoard</a>
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header> <br><br><br>
+  <br>
+  <div>
+  
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+
+  <div id="add-msg" class="alert alert-{{category}}">{{message}}</div>
+  
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+ <br> <br> <br> <br>
+  
+</div>
+    <h2 class="admin-title">{{'Edit Land' if editing else 'Ajouter un nouveau terrain'}}</h2>
+    <form  method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+    <p> {{ form.title.label }} </p> <br>
+    <p> {{ form.title() }} </p> <br>
+    <p>  {{ form.location.label }} </p> <br>
+    <p>  {{ form.location() }} </p> <br>
+    <p>  {{ form.price.label }} </p> <br>
+    <p>  {{ form.price() }} </p> <br>
+    <p> {{ form.description.label }} </p> <br>
+    <p> {{ form.description(rows=3, cols=40) }} </p> <br>
+    <p> {{ form.features.label }} </p> <br>
+    <p>  {{ form.features() }} </p> <br>
+    <p>  {{ form.status.label }} </p> <br>
+    <p>  {{ form.status() }} </p> <br>
+
+      <!-- Owner Information -->
+       
+    <p>   {{ form.name.label }} </p> <br>
+    <p>   {{ form.name(size=70) }} </p> <br>
+    <p>   {{ form.phone.label }} </p> <br>
+    <p>   {{ form.phone(size=70) }} </p> <br>
+    <p>   {{ form.email.label }} </p> <br>
+    <p>   {{ form.email(size=70) }} </p> <br>
+    
+            <!-- Map showing -->
+    <p>{{ form.latitude.label}}</p> <br>
+    <p>{{ form.latitude()}}</p> <br>
+    <p>{{ form.longitude.label}}</p> <br>
+    <p>{{ form.longitude()}}</p> <br>
+
+    <!-- Land Images -->
+     {% if editing and land.mainImage %}
+     <p>Current Main Image: </p>
+      <img src="{{(land.mainImage) }}" alt="main Image" width="200">
+     {% else %}
+     <p>No Image Uploaded yet.</p> <br>
+     {% endif %}
+    <p>  {{ form.mainImage.label }} </p> <br>
+    <p>  {{ form.mainImage() }} </p> <br>
+
+      {% if editing and land.gallery %}
+      <p>Current Gallery Images</p>
+      {% for img in land.gallery %}
+      <img src="{{ img }}" alt="Gallery Image" width="100">
+      {% else %}
+      <p>Gallery is empty to images yet</p>
+      {% endfor %}
+      {% endif %}
+    <p>  {{ form.gallery.label }} </p> <br>
+    <p>  {{ form.gallery(multiple=true) }} </p> <br> 
+    <button type="submit">{{'Update' if editing else 'Submit' }}</button>
+</form>
+
+<div id="fd-root"></div>
+<!-- <script async defer crossorigin="anonymous" 
+src="https://connect.fecebook.net/en_US/sdk.js#xfbml=1&version=v17.0" nonce="XYZ"></script>
+<div class="fb-share-button" data-href="{{land}}" data-layout="button_count"></div> -->
+<script src="/static/main.js"></script>
+</body>
+</html>

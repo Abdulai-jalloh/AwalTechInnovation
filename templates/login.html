@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Login Page</title>
+</head>
+<body class="log-p">
+  <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <!-- <a href="{{ url_for('land.dashboard')}}">Admin DashBoard</a> -->
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header>
+  <section class="Centers">
+  <section class="login-page">
+  <h2>se connecter</h2>
+ 
+  <form action="" method="post" class="log-form">
+    {{ form.hidden_tag() }}
+
+    {{ form.Name.label }} <br>
+    {{ form.Name(size=32) }} <br>
+
+    {{form.Password.label}} <br>
+    {{form.Password(size=32)}} <br>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+
+  <div id="flash-m" class="flash{{category}}">{{message}}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %} <br>
+    <button type="submit">Login</button>
+
+  </form>
+</section>
+</section>
+  <script src="/static/main.js" defer></script>
+</body>
+</html>

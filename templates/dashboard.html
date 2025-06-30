@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="admin-intro"> <br> <br> <br> <br>
+  <div class="adtxt">
+  <h1>Welcome to the admin working page</h1>
+  <h2>Here you can control everything</h2>
+  </div>
+</section>
+<section class="flash-msg"> 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</section>
+<section class="sec">
+<h2>Admin DashBoard</h2>
+
+<h1></h1>
+
+  <a href="{{url_for('land.upload_land')}}">
+  <button class="admin-butt"> 
+    Ajouter un nouveau terrain
+  </button></a>
+
+   <a href="{{ url_for('land.SellLand')}}">
+  <button class="admin-butt">Enregistrer une vente
+  </button></a>
+
+  <a href="{{ url_for('land.view_sold_land')}}">
+  <button class="admin-butt">voir les Enregistrements de vente
+  </button> </a> 
+
+  <a href="{{ url_for('land.Admin_work')}}"><button class="admin-butt">voir tous les terrains AllLands</button>
+  </a>
+  <a href="/"><button class="admin-butt">Accueil</button></a>
+
+</section>
+{% endblock %}

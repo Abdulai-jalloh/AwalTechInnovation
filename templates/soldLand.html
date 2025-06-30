@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  {% for sale in sold_lands %}
+  <br> 
+  <section class="admin-bored">
+    <h2>This are the Lands That Have been Sold</h2>
+  </section> <br>
+    <div class="sold-card">
+      {% if sale.land and sale.land.mainImage %}
+       <a href="{{ sale.land.mainImage }}"> <img src="{{( sale.land.mainImage) }}" alt="Land image"> </a>
+      {% endif %}
+      <h3><strong>Title</strong> {{ sale.land.title if sale.land else 'No title' }}</h3>
+      <p><strong>Emplacement</strong> {{ sale.land.location if sale.land else 'No location' }}</p>
+      <p><strong>prix</strong> {{ sale.land.price if sale.land else 'No price' }}</p>
+
+      <p>Buyer: {{ sale.buyerName }}</p>
+      <p>Phone: {{ sale.phone }}</p>
+      <p>Sold On: {{ sale.sale_date.strftime('%Y-%m-%d') if sale.sale_date else 'N/A' }}</p> <br><br>
+
+      {% if sale.documents %}
+        <p><a href="{{ url_for('static', filename='uploads/' + sale.documents) }}" target="_blank">View Sale Document</a></p> <br><br>
+      {% endif %}
+    </div>
+  {% else %}
+    <p>No sold land records found.</p>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} My site {% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <a href="{{ url_for('land.dashboard')}}">Admin DashBoard</a>
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header> <br> <br> <br> 
+  <main>
+    {% block content %}
+    <h1> this is about my page</h1>
+
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 LandX. Tous droits réservés.</p>
+  </footer>
+  <script src="/static/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="containers">
+<h2>Sell Land</h2>
+</section>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash {{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+
+  <p>{{ form.land_id.label }}</p>
+  <p>{{ form.land_id() }}</p>
+
+  <p>{{ form.buyerName.label }}</p>
+  <p>{{ form.buyerName() }}</p>
+
+  <p>{{ form.phone.label }}</p>
+  <p>{{ form.phone() }}</p>
+
+  <p>{{ form.sale_date.label }}</p>
+  <p>{{ form.sale_date() }}</p>
+
+  <p>{{ form.documents.label }}</p>
+  <p>{{ form.documents() }}</p>
+  <button type="submit" class="btn btn-primary mt-2">Confirm Sale</button>
+</form>
+
+
+{% endblock %}

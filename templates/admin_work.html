@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Lands</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+    <nav id="Menue-links">
+      <a href="{{ url_for('land.lands') }}" data-key="home-link" >terrain</a>
+      <a href="{{ url_for('land.contact') }}" data-key="home-link" >Contact</a>
+      <a href="{{url_for('land.login')}}">Login</a>
+      <a href="{{ url_for('land.dashboard')}}">Admin DashBoard</a>
+    </nav>
+    <img src="/static/uploads/menue.jpg" class="Menue-link" alt="Menue" onclick="MenueFunction()">
+  </header>
+    <br> <br><br>
+    <section class="admin-bored">
+    <h1>All Lands</h1>
+    </section>
+    <div class="delete-msg">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    </div>
+<section class="land-Table">
+  
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Main Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for land in lands %}
+            <tr {% if not land.visible %}
+              style="opacity: 0.5;"{% endif %}>
+                <td>{{ land.id }}</td>
+                <td>{{ land.title }}</td>
+                <td>{{ land.location }}</td>
+                <td>{{ land.price }}</td>
+                <td>{{ land.status }}</td>
+                <td>
+                    {% if land.mainImage %}
+                       <a href="{{ land.mainImage }}" target="_blank"> <img src="{{ land.mainImage }}" width="150"> </a>
+                    {% endif %}
+                </td>
+                <td>
+                   <button class="action-butt"> <a href="{{ url_for('land.view_land', land_id=land.id) }}">voir</a> </button> |
+                    <button class="action-butt"> <a href="{{ url_for('land.Edit_land', land_id=land.id) }}">Modifier</a> </button> |
+
+                    <form class="Delete-button" action="{{ url_for('land.hide_land', land_id=land.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to hide this land?');">
+                      {{ Delete_form.hidden_tag() }}
+                      <button type="submit" class="delete-btn">Masquer</button></form>
+
+                    <form class="Delete-button" action="{{ url_for('land.delete_land', land_id=land.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this land?');">
+                      {{ Delete_form.hidden_tag() }}
+                      <button type="submit" class="delete-btn">Supprimer</button></form>
+                </td>
+                <td>{{'Hidden' if not land.visible else land.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   </section>
+</body>
+</html>

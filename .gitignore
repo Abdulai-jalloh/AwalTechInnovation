@@ -1,0 +1,10 @@
+datas
+instance/database.db
+venv/
+env/
+.venv/
+*.db
+*.sqlite3
+.pytest_cache/
+.env
+
