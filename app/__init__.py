@@ -33,6 +33,10 @@ def create_app():
 
     # TEMP: Debug print — REMOVE after checking
     print(f"MYSQL_PORT being used: {mysql_port}")
+    print(f"MYSQL_USER being used: {mysql_name}")
+    print(f"MYSQL_db being used: {mysql_db}")
+    print(f"MYSQL_Password being used: {mysql_password}")
+    print(f"MYSQL_Host being used: {mysql_host}")
 
     # Cloudinary configuration
     cloudinary.config(
